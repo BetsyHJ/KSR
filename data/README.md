@@ -13,5 +13,7 @@ For KB data, we adopt the one-time FREEBASE dump consisting of 63 million.
 The KB embedding code/tool is based on projects of THUNLP(https://github.com/thunlp). OpenKE(https://github.com/thunlp/OpenKE) is their main project, you can find nearly all methods related here, including all TransX model used in the paper.
 
 ## RS data
-For RS data, we use four datasets. Here, we take ml-1m dataset as an example.
-
+For RS data, we use four datasets. 
+### Pre-training Process
+1. Data format preprocessing. 
+2. Pre-train the data and derive the embedding of items and users, based on the project of qmf (https://github.com/quora/qmf).
