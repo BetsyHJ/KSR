@@ -151,7 +151,7 @@ class GRU4Rec:
         ## add memory network info
         self.KBembedding = KBembedding
         self.MN_nfactors = MN_nfactors
-        self.MN_dims = MN_dims
+        self.MN_dims = KBembedding#MN_dims
         self.out_dim = out_dim
 
     ######################ACTIVATION FUNCTIONS#####################
@@ -471,9 +471,9 @@ class GRU4Rec:
         ## write operator
         KBItem = self.KBE[X] # shape:b*KBembedding
         EA = (self.hidden_activation(T.dot(KBItem, self.MN_Wea) + self.MN_Bea)) #shape:b*d
-        EA = T.repeat(EA.dimshuffle(0,'x',1), self.MN_nfactors, axis=-2) - self.r_matrix#shape:b*k*d
+        EA = T.repeat(EA.dimshuffle(0,'x',1), self.MN_nfactors, axis=-2) + self.r_matrix#shape:b*k*d
         MN_gate = T.nnet.sigmoid(T.dot(MN*EA, self.constant_ones)).dimshuffle(0,1,'x') #shape:dot(b*k*d, d*1) = b*k*1
-        MN = MN * MN_gate + EA * (1-MN_gate) #shape:b*k*d
+        MN = MN * (1 - MN_gate) + EA * MN_gate #shape:b*k*d
         ## read operator
         U_trans = (self.hidden_activation(T.dot(y, self.MN_Wu) + self.MN_Bu))# We need to make the same dimension. (shape:b*d)
         MN_AW = T.nnet.softmax(T.dot(U_trans, self.r_matrix.T))# shape:b*k
