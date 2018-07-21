@@ -9,6 +9,9 @@ For KB data, we adopt the one-time FREEBASE dump consisting of 63 million.
 3. Expansion. Find triples that contain at least one entity of the seed entity set(linked entity after deduplication), and delete meaningless triples(select relation/restrict entity occurences). Full data dump of Freebase can be download here(https://developers.google.com/freebase/).
 4. repeat expansion until you think it's fit for your task(seed entity set becomes larger every time you repeat).
 
+### Knowledge Graph Embedding
+The KB embedding code/tool is based on projects of THUNLP(https://github.com/thunlp). OpenKE(https://github.com/thunlp/OpenKE) is their main project, you can find nearly all methods related here, including all TransX model used in the paper.
+
 ## RS data
 For RS data, we use four datasets. Here, we take ml-1m dataset as an example.
 
