@@ -28,8 +28,8 @@ def read_ratings(filename, mlKBflag):
 		times.append(Time)
 	    t = len(item_time)
 	    if t >= 10 and t <= 5000:
-                All_ratings[user] = [item_time, scores, times]
-		#All_ratings[user] = [item_time[-200:], scores[-200:], times[-200:]]
+                #All_ratings[user] = [item_time, scores, times]
+		All_ratings[user] = [item_time[-200:], scores[-200:], times[-200:]]
             # the next user
             user = temp_str[0]
             item_time, item_ranting = {}, {}
@@ -46,8 +46,8 @@ def read_ratings(filename, mlKBflag):
 	times.append(Time)
     t = len(item_time)
     if t >= 10 and t <= 5000:
-        #All_ratings[user] = [items[-200:], scores[-200:], times[-200:]]    
-	All_ratings[user] = [items, scores, times]
+        All_ratings[user] = [items[-200:], scores[-200:], times[-200:]]    
+	#All_ratings[user] = [items, scores, times]
     f.close()
     return All_ratings #All_ratings is {user : [[items], [scores]]}
 
