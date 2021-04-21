@@ -6,10 +6,6 @@ This is our Theano implementation for the paper:
 Improving Sequential Recommendation with Knowledge-Enhanced Memory Networks.
 [paper](https://dl.acm.org/doi/10.1145/3209978.3210017). In SIGIR'2018.
 
-<div  align="center">
-<img src="model.png" width = "80%" height = "80%"/>
-</div>
-
 This code is based on [GRU4Rec](https://github.com/hidasib/GRU4Rec).
 For now, we just have theano version code.
 
